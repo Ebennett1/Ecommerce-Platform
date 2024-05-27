@@ -1,8 +1,12 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthContext from '../context/AuthContext';
 
 const ProfilePage = () => {
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    console.log('User in ProfilePage:', user);
+  }, [user]);
 
   return (
     <div>

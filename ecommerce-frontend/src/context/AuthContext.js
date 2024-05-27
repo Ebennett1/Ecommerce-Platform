@@ -39,9 +39,12 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     if (authTokens) {
-      setUser(jwtDecode(authTokens.access));
+      const decodedUser = jwtDecode(authTokens.access);
+      setUser(decodedUser);
+      console.log('User decoded from token:', decodedUser);
     }
   }, [authTokens]);
+  
 
   const contextData = {
     user,

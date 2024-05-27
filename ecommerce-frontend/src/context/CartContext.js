@@ -28,14 +28,15 @@ export const CartProvider = ({ children }) => {
 
   const updateCartItem = useCallback(async (itemId, quantity) => {
     try {
+      console.log(`Updating cart item ${itemId} with quantity ${quantity}`);
       const response = await axios.put(`/cart/update/${itemId}/`, { quantity });
+      console.log('Update response:', response.data);
       setCart(response.data);
     } catch (error) {
       console.error('Failed to update cart item', error);
-      console.log(error.response.data);
-      fetchCart();  // Refetch the cart to ensure consistency
     }
-  }, [fetchCart]);
+  }, []);
+  
 
   const removeCartItem = useCallback(async (itemId) => {
     try {
