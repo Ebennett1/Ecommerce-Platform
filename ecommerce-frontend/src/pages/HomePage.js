@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../api/axios';
+
 
 
 const HomePage = () => {
@@ -11,3 +11,10 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+
+
+// next steps- when register redirect to LoginPage,
+// cant see welcome user name, as well as quanity on cartpage
+//checkout page, -> order confirmation, -> payment details
+// work on carisal for home page

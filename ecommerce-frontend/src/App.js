@@ -11,12 +11,14 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <Router>
+    
       <AuthProvider>
+     <CartProvider>
       <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -30,8 +32,9 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/order-history" element={<OrderHistoryPage />} />
         </Routes>
+        </CartProvider>
       </AuthProvider>
-    </Router>
+    
   );
 }
 
