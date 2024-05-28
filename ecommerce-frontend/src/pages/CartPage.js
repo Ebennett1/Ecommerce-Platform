@@ -13,12 +13,15 @@ const CartPage = () => {
   // Ensure cart and cart.items are defined and are arrays
   const items = cart?.items || [];
 
+  // Calculate the total quantity of items in the cart
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+
   console.log("Cart Items:", items);  // Debug log
 
   return (
     <div>
       <h1>Your Cart</h1>
-      {items.length === 0 ? (
+      {totalQuantity === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         <ul>

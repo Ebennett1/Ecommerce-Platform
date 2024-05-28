@@ -29,27 +29,36 @@ export const CartProvider = ({ children }) => {
   const updateCartItem = useCallback(async (itemId, quantity) => {
     try {
       console.log(`Updating cart item ${itemId} with quantity ${quantity}`);
-      const response = await axios.put(`/cart/update/${itemId}/`, { quantity });
+      const token = JSON.parse(localStorage.getItem('authTokens')).access;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      console.log(`PUT /cart/update/${itemId}/`, { quantity }, config);
+      const response = await axios.put(`/cart/update/${itemId}/`, { quantity }, config);
       console.log('Update response:', response.data);
-      setCart(response.data);
+      fetchCart(); // Re-fetch the cart to get the updated state
     } catch (error) {
       console.error('Failed to update cart item', error);
     }
-  }, []);
+  }, [fetchCart]);
   
 
   const removeCartItem = useCallback(async (itemId) => {
     try {
-      const response = await axios.delete(`/cart/update/${itemId}/`);
+      const token = JSON.parse(localStorage.getItem('authTokens')).access;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      const response = await axios.delete(`/cart/update/${itemId}/`, config);
+      fetchCart();
       setCart(response.data);
     } catch (error) {
       console.error('Failed to remove cart item', error);
-      fetchCart();  // Refetch the cart to ensure consistency
     }
-  }, [fetchCart]);
-
-  useEffect(() => {
-    fetchCart();
   }, [fetchCart]);
 
   return (

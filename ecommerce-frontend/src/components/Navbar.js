@@ -16,6 +16,7 @@ const Navbar = () => {
           <span className="welcome-message">Welcome, {user.username}</span>
           <Link to="/profile">Profile</Link>
           <Link to="/order-history">Order History</Link>
+          <Link to="/checkout">Checkout</Link>
           <button onClick={logoutUser}>Logout</button>
         </>
       ) : (
