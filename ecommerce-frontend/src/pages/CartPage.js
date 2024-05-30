@@ -40,6 +40,7 @@ const CartPage = () => {
         </ul>
       )}
       <button className="back-button" onClick={() => navigate('/products')}>Back to Products</button>
+      <button className="checkout-button" onClick={() => navigate('/checkout')}>Go to Checkout</button>
     </div>
   );
 };
