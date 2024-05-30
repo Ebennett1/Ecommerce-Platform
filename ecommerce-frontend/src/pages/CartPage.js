@@ -34,6 +34,7 @@ const CartPage = () => {
               ${item.product.price}
               <button className='add-quanity-button' onClick={() => updateCartItem(item.id, item.quantity + 1)}>+</button>
               <button className='sub-quanity-button' onClick={() => updateCartItem(item.id, item.quantity - 1)}>-</button>
+              <br></br>
               <button className='remove-item-button' onClick={() => removeCartItem(item.id)}>Remove</button>
             </li>
           ))}
