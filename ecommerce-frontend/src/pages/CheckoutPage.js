@@ -23,11 +23,15 @@ const CheckoutPage = () => {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.post('/orders/create/', {}, config);
+      const response = await axios.post('/orders/create/', {}, config); // Sending empty object as data
       setOrderSuccess(true);
       console.log('Order created:', response.data);
     } catch (error) {
       console.error('Failed to create order', error);
+      if (error.response) {
+        console.error('Error response data:', error.response.data);
+        console.error('Error response status:', error.response.status);
+      }
     }
   };
 
@@ -57,8 +61,8 @@ const CheckoutPage = () => {
         </ul>
       )}
       <h3>Total Price: ${totalPrice.toFixed(2)}</h3>
-      <button onClick={() => navigate('/cart')}>Back to Cart</button>
-      <button onClick={handleCheckout}>Place Order</button>
+      <button className='back-button' onClick={() => navigate('/cart')}>Back to Cart</button>
+      <button className='order-button' onClick={handleCheckout}>Place Order</button>
     </div>
   );
 };
