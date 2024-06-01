@@ -15,7 +15,6 @@ export default HomePage;
 
 
 // Next steps- 
-// when register redirect to LoginPage,-->'No Account? register here + 'Already registered? Log In Here'
 // profile settings updating
 // Work on carisal for home page
 // Tweak flow (smoothness) between pages, (Auth flow,'please sign in', 'Must Be Signed in to view ______')
