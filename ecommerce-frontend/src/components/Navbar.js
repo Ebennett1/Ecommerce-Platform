@@ -10,6 +10,7 @@ const Navbar = () => {
     <nav className="navbar">
       <Link to="/">Home</Link>
       <Link to="/products">Products</Link>
+      <Link to="/categories">Search For <br></br>Products By Category</Link>
       <Link to="/cart">Cart</Link>
       {user ? (
         <>

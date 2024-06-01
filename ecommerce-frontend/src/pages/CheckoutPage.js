@@ -108,7 +108,7 @@ const CheckoutForm = ({ clientSecret, setOrderSuccess, setOrderDetails }) => {
   return (
     <form onSubmit={handleSubmit}>
       <CardElement />
-      <button type="submit" disabled={!stripe}>Submit Payment</button>
+      <button className='checkout-button' type="submit" disabled={!stripe}>Place Order</button>
     </form>
   );
 };
