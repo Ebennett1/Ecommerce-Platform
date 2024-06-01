@@ -20,10 +20,13 @@ const ProductListPage = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryId = params.get('category_id');
+    const searchQuery = params.get('search');
 
     let url = '/products/';
     if (categoryId) {
       url += `?category_id=${categoryId}`;
+    } else if (searchQuery) {
+      url += `?search=${searchQuery}`;
     }
 
     console.log('Fetching products from URL:', url);

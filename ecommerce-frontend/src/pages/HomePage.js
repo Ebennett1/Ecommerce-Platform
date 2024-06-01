@@ -14,7 +14,7 @@ export default HomePage;
 
 
 
-// Next steps- catagory page to shop by category 
+// Next steps- 
 // Search bar
 // when register redirect to LoginPage,-->'No Account? register here + 'Already registered? Log In Here'
 // profile settings updating

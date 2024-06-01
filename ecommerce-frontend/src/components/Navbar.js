@@ -1,10 +1,16 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
-
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    navigate(`/products?search=${searchQuery}`);
+  };
 
   return (
     <nav className="navbar">
@@ -18,6 +24,15 @@ const Navbar = () => {
           <Link to="/profile">Profile</Link>
           <Link to="/order-history">Order History</Link>
           <Link to="/checkout">Checkout</Link>
+          <form className='search-form' onSubmit={handleSearch} style={{ display: 'inline' }}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search products"
+        />
+        <button className='search-bar' type="submit">Search</button>
+      </form>
           <button onClick={logoutUser}>Logout</button>
         </>
       ) : (
@@ -26,6 +41,7 @@ const Navbar = () => {
           <Link to="/register">Register</Link>
         </>
       )}
+
     </nav>
   );
 };

@@ -55,7 +55,7 @@ nav button {
 
 .welcome-message {
   color: white;
-  margin-right: 10px;
+  margin-left: 30px
 }
 
 .product-detail {
@@ -114,6 +114,16 @@ nav button {
 .remove-item-button {
   background-color: #ea0808;
   margin-left: 240px
+}
+
+.search-form {
+  margin-left: 30px
+}
+
+.search-bar {
+  background-color: #007bff;
+  margin-top: 10px;
+  margin-left: 55px;
 }
 
 
