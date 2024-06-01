@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
-import axios from '../api/axios';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 
 const RegisterPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { registerUser } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post('register/', {
-      username,
-      email,
-      password,
-    });
+    const success = await registerUser(username, email, password);
+    if (success) {
+      navigate('/login');
+    }
   };
 
   return (
@@ -48,6 +50,7 @@ const RegisterPage = () => {
         </div>
         <button type="submit">Register</button>
       </form>
+      <p>Already registered? <Link to="/login">Log In Here</Link></p>
     </div>
   );
 };

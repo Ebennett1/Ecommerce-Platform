@@ -15,7 +15,6 @@ export default HomePage;
 
 
 // Next steps- 
-// Search bar
 // when register redirect to LoginPage,-->'No Account? register here + 'Already registered? Log In Here'
 // profile settings updating
 // Work on carisal for home page

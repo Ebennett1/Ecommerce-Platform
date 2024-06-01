@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +40,7 @@ const LoginPage = () => {
         </div>
         <button type="submit">Login</button>
       </form>
+      <p>No Account? <Link to="/register">Register here</Link></p>
     </div>
   );
 };

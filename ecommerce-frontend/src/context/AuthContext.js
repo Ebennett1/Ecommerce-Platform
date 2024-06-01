@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import {jwtDecode} from 'jwt-decode';
-import axios from '../api/axios';
+import axiosInstance from '../api/axios';
 import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
   const loginUser = async (username, password) => {
     try {
-      const response = await axios.post('login/', { username, password });
+      const response = await axiosInstance.post('login/', { username, password });
       const data = response.data;
 
       setAuthTokens(data);
@@ -45,13 +45,27 @@ export const AuthProvider = ({ children }) => {
       console.log('User decoded from token:', decodedUser);
     }
   }, [authTokens]);
-  
+
+  const registerUser = async (username, email, password) => {
+    try {
+      const response = await axiosInstance.post('/register/', {
+        username,
+        email,
+        password,
+      });
+      return true;
+    } catch (error) {
+      console.error('Registration failed:', error);
+      return false;
+    }
+  };
 
   const contextData = {
     user,
     authTokens,
     loginUser,
     logoutUser,
+    registerUser,
   };
 
   return <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>;
