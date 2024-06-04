@@ -63,7 +63,7 @@ nav button {
   padding: 20px;
 }
 
-.back-button {
+.back-button, .reorder-button {
   margin-bottom: 20px;
   padding: 10px 20px;
   background-color: #007bff;

@@ -3,6 +3,7 @@ import axios from '../api/axios';
 
 const OrderHistoryPage = () => {
   const [orders, setOrders] = useState([]);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const fetchOrderHistory = async () => {
@@ -17,6 +18,7 @@ const OrderHistoryPage = () => {
         setOrders(response.data);
       } catch (error) {
         console.error('Error fetching order history:', error);
+        setError('Error fetching order history.');
       }
     };
 
@@ -35,13 +37,31 @@ const OrderHistoryPage = () => {
       setOrders([]);
     } catch (error) {
       console.error('Error clearing order history:', error);
+      setError('Error clearing order history.');
+    }
+  };
+
+  const handleReorder = async (orderId) => {
+    try {
+      const token = JSON.parse(localStorage.getItem('authTokens')).access;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+      await axios.post(`/order-history/reorder/${orderId}/`, {}, config);
+      alert('Items added to cart');
+    } catch (error) {
+      console.error('Error reordering:', error);
+      setError('Error reordering items.');
     }
   };
 
   return (
     <div>
       <h1>Order History</h1>
-      <button onClick={handleClearHistory}>Clear Order History</button>
+      <button className='back-button' onClick={handleClearHistory}>Clear Order History</button>
+      {error && <p className="error-message">{error}</p>}
       {orders.length === 0 ? (
         <p>You have no orders.</p>
       ) : (
@@ -58,6 +78,7 @@ const OrderHistoryPage = () => {
                   </li>
                 ))}
               </ul>
+              <button onClick={() => handleReorder(order.id)}>Reorder</button>
             </li>
           ))}
         </ul>

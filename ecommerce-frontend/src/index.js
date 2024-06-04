@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bulma/css/bulma.min.css';
+import 'bulma-carousel/dist/css/bulma-carousel.min.css';
+import 'bulma-carousel/dist/js/bulma-carousel.min.js';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
