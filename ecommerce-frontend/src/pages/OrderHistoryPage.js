@@ -78,7 +78,7 @@ const OrderHistoryPage = () => {
                   </li>
                 ))}
               </ul>
-              <button onClick={() => handleReorder(order.id)}>Reorder</button>
+              <button className='reorder-button' onClick={() => handleReorder(order.id)}>Reorder</button>
             </li>
           ))}
         </ul>
