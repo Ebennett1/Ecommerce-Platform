@@ -16,7 +16,7 @@ const CategoryListPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="category-list">
       <h1>Categories</h1>
       <ul>
         {categories.map(category => (

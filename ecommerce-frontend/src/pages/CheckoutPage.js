@@ -19,15 +19,24 @@ const CheckoutPage = () => {
   useEffect(() => {
     const fetchInitialData = async () => {
       await fetchCart();
+      if (cart.items.length === 0) {
+        setIsLoading(false);
+        return;
+      }
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
       const config = {
         headers: {
           Authorization: `Bearer ${token}`
         }
       };
-      const response = await axios.post('/create-payment-intent/', { total_price: cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0) }, config);
-      setClientSecret(response.data.clientSecret);
-      setIsLoading(false);
+      try {
+        const response = await axios.post('/create-payment-intent/', { total_price: cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0) }, config);
+        setClientSecret(response.data.clientSecret);
+      } catch (error) {
+        console.error('Error creating payment intent:', error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchInitialData();
@@ -66,9 +75,11 @@ const CheckoutPage = () => {
       )}
       <h3>Total Price: ${cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2)}</h3>
       <button className='back-button' onClick={() => navigate('/cart')}>Back to Cart</button>
-      <Elements stripe={stripePromise}>
-        <CheckoutForm clientSecret={clientSecret} setOrderSuccess={setOrderSuccess} setOrderDetails={setOrderDetails} />
-      </Elements>
+      {cart.items.length > 0 && (
+        <Elements stripe={stripePromise}>
+          <CheckoutForm clientSecret={clientSecret} setOrderSuccess={setOrderSuccess} setOrderDetails={setOrderDetails} />
+        </Elements>
+      )}
     </div>
   );
 };
