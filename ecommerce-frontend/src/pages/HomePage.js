@@ -25,4 +25,4 @@ export default HomePage;
 // Side Menu bar to clean up Nav
 // Logo, Pagination
 // Tweak flow (smoothness) between pages, (Auth flow,'please sign in', 'Must Be Signed in to view ______')
-// Icons if possible for cart, profile, etc
+// More Pre Styled Components, Icons if possible for cart, profile, etc

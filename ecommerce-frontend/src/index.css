@@ -171,3 +171,24 @@ nav button {
 }
 
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.prev-button, .next-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px; /* Adjust spacing between buttons */
+  cursor: pointer;
+  font-size: 16px; /* Adjust font size as needed */
+  border-radius: 5px; /* Optional: for rounded corners */
+}
+
+.prev-button:hover, .next-button:hover {
+  background-color: #0056b3; /* Adjust hover color */
+}

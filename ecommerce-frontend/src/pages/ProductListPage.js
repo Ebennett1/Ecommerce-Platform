@@ -5,6 +5,9 @@ import { Link, useLocation } from 'react-router-dom';
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [nextPage, setNextPage] = useState(null);
+  const [prevPage, setPrevPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const location = useLocation();
 
   useEffect(() => {
@@ -21,25 +24,28 @@ const ProductListPage = () => {
     const params = new URLSearchParams(location.search);
     const categoryId = params.get('category_id');
     const searchQuery = params.get('search');
-
-    let url = '/products/';
+    
+    let url = `/products/?page=${currentPage}`;
     if (categoryId) {
-      url += `?category_id=${categoryId}`;
-    } else if (searchQuery) {
-      url += `?search=${searchQuery}`;
+      url += `&category_id=${categoryId}`;
+    }
+    if (searchQuery) {
+      url += `&search=${searchQuery}`;
     }
 
     console.log('Fetching products from URL:', url);
 
     axios.get(url)
       .then(response => {
-        setProducts(response.data);
+        setProducts(response.data.results);
+        setNextPage(response.data.next);
+        setPrevPage(response.data.previous);
       })
       .catch(error => {
         console.error('There was an error fetching the products!', error);
         console.error(error.response || error.message);
       });
-  }, [location.search]);
+  }, [location.search, currentPage]);
 
   const handleCategoryChange = (event) => {
     const selectedCategory = event.target.value;
@@ -47,6 +53,18 @@ const ProductListPage = () => {
       window.location.href = `/products?category_id=${selectedCategory}`;
     } else {
       window.location.href = '/products';
+    }
+  };
+
+  const handleNextPage = () => {
+    if (nextPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevPage = () => {
+    if (prevPage) {
+      setCurrentPage(currentPage - 1);
     }
   };
 
@@ -76,6 +94,10 @@ const ProductListPage = () => {
             <Link to={`/product/${product.id}`} className="product-link">View Details</Link>
           </div>
         ))}
+      </div>
+      <div className="pagination">
+        {prevPage && <button className='prev-button' onClick={handlePrevPage}>Previous</button>}
+        {nextPage && <button className='next-button' onClick={handleNextPage}>Next</button>}
       </div>
     </div>
   );
