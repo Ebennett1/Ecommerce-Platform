@@ -13,14 +13,14 @@ import LoginPage from './pages/LoginPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
-import Navbar from './components/Navbar';
+import Header from './components/Header';
 
 function App() {
   return (
     
       <AuthProvider>
      <CartProvider>
-      <Navbar />
+     <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductListPage />} /> 
