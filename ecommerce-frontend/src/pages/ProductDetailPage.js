@@ -30,7 +30,7 @@ const ProductDetailPage = () => {
 
   return (
     <div className="product-detail">
-      <h1>{product.name}</h1>
+      <button className='product-names'><u>{product.name}</u></button>
       <p>{product.description}</p>
       <p>${product.price}</p>
       {product.image && (

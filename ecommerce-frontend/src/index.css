@@ -14,7 +14,7 @@ code {
 
 /* Header Styles */
 .header-container {
-  background-color: #ADD8E6; /* Baby blue color */
+  background-color: #001f3f; /* Navy Blue */
   padding: 20px;
   text-align: center;
 }
@@ -22,6 +22,7 @@ code {
 .header-container h1 {
   margin: 0;
   font-size: 24px;
+  color: #FFD700; /* Gold */
 }
 
 .header-container .search-form {
@@ -39,13 +40,13 @@ code {
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: #50C878; /* Emerald Green */
   color: white;
   cursor: pointer;
 }
 
 .search-form button:hover {
-  background-color: #0056b3;
+  background-color: #3e8e41; /* Darker Emerald Green */
 }
 
 /* Navbar Styles */
@@ -53,28 +54,28 @@ code {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #ADD8E6;
+  background-color: #001f3f; /* Navy Blue */
   padding: 10px;
 }
 
 .navbar a {
   text-decoration: none;
-  color: #000;
+  color: #FFFFFF; /* White */
 }
 
 .navbar a:hover {
-  color: #007bff;
+  color: #FFD700; /* Gold */
 }
 
 .navbar .welcome-message {
-  color: white;
+  color: #FFD700; /* Gold */
   margin-left: 30px;
 }
 
 .navbar button {
   background: none;
   border: none;
-  color: #007bff;
+  color: #FFD700; /* Gold */
   cursor: pointer;
   padding: 0;
 }
@@ -84,10 +85,6 @@ code {
 }
 
 /* Sidebar Styles */
-body {
-  font-family: "Lato", sans-serif;
-}
-
 .sidebar {
   height: 100%;
   width: 0;
@@ -95,7 +92,7 @@ body {
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #111; /* Black */
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -105,13 +102,13 @@ body {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #818181; /* Light Grey */
   display: block;
   transition: 0.3s;
 }
 
 .sidebar a:hover {
-  color: #f1f1f1;
+  color: #f1f1f1; /* White */
 }
 
 .sidebar .closebtn {
@@ -131,14 +128,14 @@ body {
   margin-right: 400px;
   font-size: 20px;
   cursor: pointer;
-  background-color: #111;
+  background-color: #111; /* Black */
   color: white;
   padding: 10px 15px;
   border: none;
 }
 
 .openbtn:hover {
-  background-color: #444;
+  background-color: #444; /* Darker Grey */
 }
 
 /* Products Styles */
@@ -146,6 +143,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  padding-bottom: 100px; /* Add extra padding to the bottom */
+}
+
+.product-names {
+ background-color: #FFD700
 }
 
 .product {
@@ -165,13 +167,15 @@ body {
 .product-detail {
   text-align: center;
   padding: 20px;
+  padding-bottom: 100px; /* Add extra padding to the bottom */
+  position: relative;
 }
 
 /* Button Styles */
 .back-button, .reorder-button, .checkout-button, .order-button, .add-to-cart-button, .add-quanity-button, .sub-quanity-button, .remove-item-button {
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #001f3f; /* Navy Blue */
   color: white;
   border: none;
   border-radius: 4px;
@@ -179,15 +183,15 @@ body {
 }
 
 .back-button:hover, .checkout-button:hover, .order-button:hover, .add-to-cart-button:hover, .add-quanity-button:hover, .sub-quanity-button:hover, .remove-item-button:hover {
-  background-color: #0056b3;
+  background-color: #003366; /* Darker Navy Blue */
 }
 
 .add-to-cart-button {
-  background-color: #28a745;
+  background-color: #50C878; /* Emerald Green */
 }
 
 .add-to-cart-button:hover {
-  background-color: #218838;
+  background-color: #3e8e41; /* Darker Emerald Green */
 }
 
 .sub-quanity-button {
@@ -239,7 +243,7 @@ body {
 }
 
 .carousel-wrapper {
-  background-color: #697cc8;
+  background-color: #001f3f; /* Navy Blue */
   display: flex;
   flex-direction: column; /* Stack carousels vertically */
   justify-content: center;
@@ -252,10 +256,11 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 20px; /* Adjust as needed */
+  padding-bottom: 66px; /* Ensure it doesn't get hidden behind the footer */
 }
 
 .prev-button, .next-button {
-  background-color: #007bff;
+  background-color: #001f3f; /* Navy Blue */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -266,7 +271,7 @@ body {
 }
 
 .prev-button:hover, .next-button:hover {
-  background-color: #0056b3; /* Adjust hover color */
+  background-color: #003366; /* Darker Navy Blue */
 }
 
 /* Category List Styles */
@@ -278,7 +283,7 @@ body {
 
 .category-list h1 {
   text-align: center;
-  color: #333;
+  color: #001f3f; /* Navy Blue */
 }
 
 .category-list ul {
@@ -304,12 +309,12 @@ body {
 
 .category-list a {
   text-decoration: none;
-  color: #007bff;
+  color: #001f3f; /* Navy Blue */
   display: block;
 }
 
 .category-list a:hover {
-  color: #0056b3;
+  color: #003366; /* Darker Navy Blue */
 }
 
 
@@ -321,8 +326,9 @@ body {
   position: fixed;
   bottom: 0;
   width: 100%;
-  background-color: #111;
+  background-color: #001f3f; /* Navy Blue */
   padding: 10px 0;
+  
 }
 
 .footer-icon {
@@ -332,7 +338,7 @@ body {
 
 .footer-icon a {
   text-decoration: none;
-  color: #fff;
+  color: #FFD700; /* Gold */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -345,3 +351,100 @@ body {
 .footer-icon span {
   font-size: 12px;
 }
+
+.Order-Histoy-div {
+  display: flex;
+}
+
+.cart-page {
+  padding: 20px;
+  padding-bottom: 100px; /* Add extra padding to the bottom */
+  position: relative;
+}
+
+.cart-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-summary h2 {
+  font-size: 24px;
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+
+.item-details {
+  flex-grow: 1;
+}
+
+.item-details h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.quantity-controls button {
+  width: 30px;
+  height: 30px;
+  background-color: #ddd;
+  border: none;
+  cursor: pointer;
+}
+
+.quantity-controls span {
+  margin: 0 10px;
+  font-size: 16px;
+}
+
+.remove-item-button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.checkout-button {
+  background-color: #001f3f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.checkout-button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  background-color: #001f3f;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.back-button:hover {
+  background-color: #bbb;
+}
+

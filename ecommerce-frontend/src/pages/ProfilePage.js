@@ -72,7 +72,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <div className='profile-div'>
       <h1>Profile Page</h1>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>

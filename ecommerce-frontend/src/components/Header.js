@@ -17,9 +17,9 @@ const Header = () => {
       <div className="navbar">
         <div id="sidebar" className="sidebar">
           <button className="closebtn" onClick={() => document.getElementById("sidebar").style.width = "0"}>×</button>
+          <Link to="/categories">Shop By <br></br> Category</Link>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
-          <Link to="/categories">Search For <br></br>Products By Category</Link>
           <Link to="/cart">Cart</Link>
           {user ? (
             <>

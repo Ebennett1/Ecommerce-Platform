@@ -86,7 +86,7 @@ const ProductListPage = () => {
       <div className="products">
         {products.map(product => (
           <div key={product.id} className="product">
-            <h2>{product.name}</h2>
+            <h2 className='product-names'>{product.name}</h2>
             <p>${product.price}</p>
             {product.image && (
               <img src={product.image} alt={product.name} className="product-image" />

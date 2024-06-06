@@ -20,7 +20,10 @@ export default HomePage;
 
 
 // Next steps- 
-// Work on carisal for home page
 // Logo
+// Finish up on carisal for home page
 // Tweak flow (smoothness) between pages, (Auth flow,'please sign in', 'Must Be Signed in to view ______')
-// More Pre Styled Components, Icons if possible for cart, profile, etc
+// More Pre Styled Components(extra CSS)---> Profile,Order-History,Cart,Checkout pages
+// MEDIA QUERIES!
+// Deployment
+// README.md

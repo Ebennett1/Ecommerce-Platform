@@ -18,7 +18,7 @@ const OrderHistoryPage = () => {
         setOrders(response.data);
       } catch (error) {
         console.error('Error fetching order history:', error);
-        setError('Error fetching order history.');
+        setError('Please Sign in To View Order history.'); 
       }
     };
 
@@ -58,7 +58,7 @@ const OrderHistoryPage = () => {
   };
 
   return (
-    <div>
+    <div className='Order-Histoy-div'>
       <h1>Order History</h1>
       <button className='back-button' onClick={handleClearHistory}>Clear Order History</button>
       {error && <p className="error-message">{error}</p>}
@@ -68,13 +68,13 @@ const OrderHistoryPage = () => {
         <ul>
           {orders.map(order => (
             <li key={order.id}>
-              <h2>Order {order.id}</h2>
+              <h2><u>Order {order.id}</u> </h2>
               <p>Total Price: ${order.total_price}</p>
               <p>Status: {order.status}</p>
               <ul>
                 {order.items.map(item => (
                   <li key={item.id}>
-                    {item.product.name} - Quantity: {item.quantity} - Price: ${item.price}
+                    {item.product.name} Quantity: {item.quantity} - Price: ${item.price}
                   </li>
                 ))}
               </ul>
