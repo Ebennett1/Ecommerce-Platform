@@ -21,7 +21,6 @@ export default HomePage;
 
 // Next steps- 
 // Work on carisal for home page
-// Side Menu bar to clean up Nav
-// Logo, Pagination
+// Logo
 // Tweak flow (smoothness) between pages, (Auth flow,'please sign in', 'Must Be Signed in to view ______')
 // More Pre Styled Components, Icons if possible for cart, profile, etc

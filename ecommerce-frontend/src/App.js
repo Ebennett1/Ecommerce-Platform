@@ -14,6 +14,7 @@ import OrderHistoryPage from './pages/OrderHistoryPage';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import Header from './components/Header';
+import Footer from './components/Footer.js';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/order-history" element={<OrderHistoryPage />} />
         </Routes>
+        <Footer />
         </CartProvider>
       </AuthProvider>
     

@@ -1,3 +1,5 @@
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 /* General Styles */
 body {
   margin: 0;
@@ -308,4 +310,38 @@ body {
 
 .category-list a:hover {
   color: #0056b3;
+}
+
+
+/* Footer.css */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  padding: 10px 0;
+}
+
+.footer-icon {
+  color: #fff;
+  text-align: center;
+}
+
+.footer-icon a {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-icon i {
+  font-size: 24px;
+}
+
+.footer-icon span {
+  font-size: 12px;
 }
