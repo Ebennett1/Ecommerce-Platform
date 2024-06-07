@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
 
+
 const RegisterPage = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState(null);
@@ -25,25 +26,25 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       <h1>Register</h1>
       {error && <div className="error">{JSON.stringify(error)}</div>}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Username:</label>
           <input type="text" name="username" value={formData.username} onChange={handleChange} required />
         </div>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input type="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password:</label>
           <input type="password" name="password" value={formData.password} onChange={handleChange} required />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className="auth-button">Register</button>
       </form>
-      <p>Already Have Account? <Link to="/login">Login Here</Link></p>
+      <p>Already Have Account? <Link to="/login" className="auth-link">Login Here</Link></p>
     </div>
   );
 };

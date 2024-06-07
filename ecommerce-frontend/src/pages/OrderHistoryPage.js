@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 
+
 const OrderHistoryPage = () => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState('');
@@ -58,22 +59,25 @@ const OrderHistoryPage = () => {
   };
 
   return (
-    <div className='Order-Histoy-div'>
+    <div className='order-history-div'>
       <h1>Order History</h1>
-      <button className='back-button' onClick={handleClearHistory}>Clear Order History</button>
+      <button className='clear-history-button' onClick={handleClearHistory}>Clear Order History</button>
       {error && <p className="error-message">{error}</p>}
       {orders.length === 0 ? (
         <p>You have no orders.</p>
       ) : (
-        <ul>
+        <ul className='order-list'>
           {orders.map(order => (
-            <li key={order.id}>
+            <li key={order.id} className='order-item'>
               <h2><u>Order {order.id}</u> </h2>
               <p>Total Price: ${order.total_price}</p>
               <p>Status: {order.status}</p>
-              <ul>
+              <ul className='order-item-list'>
                 {order.items.map(item => (
-                  <li key={item.id}>
+                  <li key={item.id} className='order-product'>
+                    {item.product.image && (
+                      <img src={item.product.image} alt={item.product.name} className="order-product-image"/>
+                    )}
                     {item.product.name} Quantity: {item.quantity} - Price: ${item.price}
                   </li>
                 ))}

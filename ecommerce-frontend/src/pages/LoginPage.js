@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 
+
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -17,10 +18,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Username</label>
           <input
             type="text"
@@ -29,7 +30,7 @@ const LoginPage = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password</label>
           <input
             type="password"
@@ -38,9 +39,9 @@ const LoginPage = () => {
             required
           />
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" className="auth-button">Login</button>
       </form>
-      <p>No Account? <Link to="/register">Register here</Link></p>
+      <p>No Account? <Link to="/register" className="auth-link">Register here</Link></p>
     </div>
   );
 };

@@ -8,6 +8,7 @@ import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 import OrderConfirmationPage from './pages/OrderConfirmationPage';
 import ProfilePage from './pages/ProfilePage';
+import PasswordReset from './forms/PasswordReset';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import OrderHistoryPage from './pages/OrderHistoryPage';
@@ -33,6 +34,7 @@ function App() {
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/order-history" element={<OrderHistoryPage />} />
         </Routes>
         <Footer />

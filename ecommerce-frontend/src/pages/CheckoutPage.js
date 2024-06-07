@@ -42,10 +42,6 @@ const CheckoutPage = () => {
     fetchInitialData();
   }, []); // Only run once
 
-  const handleCheckout = async () => {
-    // Move payment handling to the Stripe form
-  };
-
   if (orderSuccess) {
     return <OrderConfirmationPage order={orderDetails} />;
   }
@@ -55,18 +51,18 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div>
+    <div className="checkout-container">
       <h1>Checkout</h1>
       <h2>Order Summary</h2>
       {cart.items.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        <ul>
+        <ul className="order-summary">
           {cart.items.map(item => (
-            <li key={item.id}>
-              {item.product.name} - Quantity: {item.quantity} <br/>
+            <li key={item.id} className="order-item">
+              {item.product.name} - Quantity: {item.quantity} <br />
               {item.product.image && (
-                <img src={item.product.image} alt={item.product.name} className="product-image"/>
+                <img src={item.product.image} alt={item.product.name} className="product-image" />
               )}
               ${item.product.price} each
             </li>
@@ -74,7 +70,7 @@ const CheckoutPage = () => {
         </ul>
       )}
       <h3>Total Price: ${cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2)}</h3>
-      <button className='back-button' onClick={() => navigate('/cart')}>Back to Cart</button>
+      <button className="back-button" onClick={() => navigate('/cart')}>Back to Cart</button>
       {cart.items.length > 0 && (
         <Elements stripe={stripePromise}>
           <CheckoutForm clientSecret={clientSecret} setOrderSuccess={setOrderSuccess} setOrderDetails={setOrderDetails} />
@@ -117,9 +113,9 @@ const CheckoutForm = ({ clientSecret, setOrderSuccess, setOrderDetails }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button className='checkout-button' type="submit" disabled={!stripe}>Place Order</button>
+    <form onSubmit={handleSubmit} className="checkout-form">
+      <CardElement className="card-element" />
+      <button className="checkout-button" type="submit" disabled={!stripe}>Place Order</button>
     </form>
   );
 };

@@ -22,8 +22,9 @@ export default HomePage;
 // Next steps- 
 // Logo
 // Finish up on carisal for home page
-// Tweak flow (smoothness) between pages, (Auth flow,'please sign in', 'Must Be Signed in to view ______')
-// More Pre Styled Components(extra CSS)---> Profile,Order-History,Cart,Checkout pages
 // MEDIA QUERIES!
 // Deployment
 // README.md
+
+// After Graduation-->
+// Tweak flow (smoothness) between pages, (Auth flow,'please sign in', 'Must Be Signed in to view ______')

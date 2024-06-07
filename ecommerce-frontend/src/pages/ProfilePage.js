@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
+import PasswordReset from '../forms/PasswordReset';
 import axios from '../api/axios';
+import { Link } from 'react-router-dom';
+
 
 const ProfilePage = () => {
   const { user, authTokens } = useContext(AuthContext);
@@ -65,31 +68,33 @@ const ProfilePage = () => {
       };
 
       const response = await axios.put('/profile/', profileData, config);
-      console.log('Profile updated successfully:', response.data);
+      alert('Profile updated successfully:', response.data);
     } catch (error) {
       console.error('Error updating profile:', error.response?.data || error.message);
     }
   };
 
   return (
-    <div className='profile-div'>
+    <div className='profile-container'>
       <h1>Profile Page</h1>
       {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div>
+      <form className='profile-form' onSubmit={handleSubmit}>
+        <div className='form-group'>
           <label>Username:</label>
           <input type="text" name="username" value={profile.username} readOnly />
         </div>
-        <div>
+        <div className='form-group'>
           <label>Email:</label>
           <input type="email" name="email" value={profile.email} readOnly />
         </div>
-        <div>
+        <div className='form-group'>
           <label>Phone Number:</label>
           <input type="text" name="phone_number" value={profile.phone_number} onChange={handleChange} />
         </div>
-        <button type="submit">Update Profile</button>
+        <button type="submit" className='update-button'>Update Profile</button>
       </form>
+
+      <Link to="/password-reset">Forgot Password? Reset Here</Link>
     </div>
   );
 };

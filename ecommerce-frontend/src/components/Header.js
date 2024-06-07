@@ -49,6 +49,9 @@ const Header = () => {
           />
           <button className='search-bar' type="submit">Search</button>
         </form>
+        <div className="footer-icon">
+        <Link to="/cart"><i className="fas fa-shopping-cart"></i><span>Cart</span></Link>
+      </div>
       </div>
     </header>
   );
