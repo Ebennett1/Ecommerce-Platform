@@ -12,8 +12,8 @@ const HomePage = () => {
   ];
 
   const carouselItems2 = [
-    { image: "https://i.imgur.com/LeaYlaf.png", link: "/products?category_id=8", style: { width: '400px', height: '300px' } },
-    { image: "https://i.imgur.com/khU5XlE.png", link: "/product/39", style: { width: 'auto', height: '300px' } },
+    { image: "https://i.imgur.com/kLmIBnd.png", link: "/products?category_id=8", style: { width: 'auto', height: 'auto' } },
+    { image: "https://i.imgur.com/unkbwmb.png", link: "/product/39", style: { width: 'auto', height: '300px' } },
     { image: "https://i5.walmartimages.com/asr/64cca0d7-85f4-48f6-96f2-a29e62f79abf.d218531f15301e3cc27c700685cb20bb.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF", link: "/product/34", style: { width: '400px', height: '300px' } }
   ];
 
