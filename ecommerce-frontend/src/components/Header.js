@@ -17,7 +17,7 @@ const Header = () => {
       <div className="navbar">
         <div id="sidebar" className="sidebar">
           <button className="closebtn" onClick={() => document.getElementById("sidebar").style.width = "0"}>×</button>
-          <Link to="/categories">Shop By <br></br> Category</Link>
+          <Link to="/categories">Shop By Category</Link>
           <Link to="/">Home</Link>
           <Link to="/products">Products</Link>
           <Link to="/cart">Cart</Link>
@@ -39,19 +39,20 @@ const Header = () => {
         <div id="main">
           <button className="openbtn" onClick={() => document.getElementById("sidebar").style.width = "250px"}>☰</button>
         </div>
-        <img className='logo'  src="https://i.imgur.com/6ai8tzZ.png" alt="logo" />
+        <img className='logo' src="https://i.imgur.com/6ai8tzZ.png" alt="logo" />
         <form className='search-form' onSubmit={handleSearch}>
           <input
+            className="input is-rounded"
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search products"
           />
-          <button className='search-bar' type="submit">Search</button>
+          <button className='button is-info is-rounded' type="submit">Search</button>
         </form>
         <div className="footer-icon">
-        <Link to="/cart"><i className="fas fa-shopping-cart"></i><span>Cart</span></Link>
-      </div>
+          <Link to="/cart"><i className="fas fa-shopping-cart"></i><span>Cart</span></Link>
+        </div>
       </div>
     </header>
   );

@@ -29,26 +29,6 @@ code {
   margin-top: 10px;
 }
 
-.search-form input {
-  padding: 10px;
-  margin-left: 200px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.search-form button {
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  background-color: #50C878; /* Emerald Green */
-  color: white;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.search-form button:hover {
-  background-color: #3e8e41; /* Darker Emerald Green */
-}
 
 /* Navbar Styles */
 .navbar {

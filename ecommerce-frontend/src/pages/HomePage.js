@@ -21,7 +21,7 @@ export default HomePage;
 
 // Next steps- 
 // Finish up on carisal for home page
-// MEDIA QUERIES!
+// MEDIA QUERIES!-> change to use bulma for pages for media queris
 // Deployment
 // README.md
 
