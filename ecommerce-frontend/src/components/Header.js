@@ -39,7 +39,7 @@ const Header = () => {
         <div id="main">
           <button className="openbtn" onClick={() => document.getElementById("sidebar").style.width = "250px"}>☰</button>
         </div>
-        <h1>Welcome To EliteCart!</h1>
+        <img className='logo'  src="https://i.imgur.com/6ai8tzZ.png" alt="logo" />
         <form className='search-form' onSubmit={handleSearch}>
           <input
             type="text"

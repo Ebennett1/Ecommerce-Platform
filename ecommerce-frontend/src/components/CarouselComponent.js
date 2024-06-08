@@ -15,7 +15,7 @@ const CarouselComponent = () => {
     <div className='carousel-container'>
     <div className="carousel">
       <div className="item-1">
-        <img src="https://via.placeholder.com/800x400" alt="First slide" />
+        <img src="https://i.imgur.com/cr2njw4.png" alt="First slide" />
       </div>
       <div className="item-2">
       <Link to="/products">

@@ -20,7 +20,6 @@ export default HomePage;
 
 
 // Next steps- 
-// Logo
 // Finish up on carisal for home page
 // MEDIA QUERIES!
 // Deployment
