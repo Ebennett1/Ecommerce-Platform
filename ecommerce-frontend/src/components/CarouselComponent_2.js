@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import 'bulma-carousel/dist/css/bulma-carousel.min.css';
+import bulmaCarousel from 'bulma-carousel';
 
-const CarouselComponent = () => {
+const CarouselComponent_2 = ({ items }) => {
   useEffect(() => {
-    const bulmaCarousel = require('bulma-carousel');
     bulmaCarousel.attach('.carousel', {
       slidesToScroll: 1,
       slidesToShow: 1,
@@ -12,19 +14,17 @@ const CarouselComponent = () => {
 
   return (
     <div className='carousel-container_2'>
-    <div className="carousel">
-      <div className="item-1">
-        <img src="https://via.placeholder.com/800x400" alt="First slide" />
+      <div className="carousel">
+        {items.map((item, index) => (
+          <div className={`item-${index + 1}`} key={index}>
+            <Link to={item.link}>
+              <img src={item.image} alt={`Slide ${index + 1}`} style={item.style} />
+            </Link>
+          </div>
+        ))}
       </div>
-      <div className="item-2">
-        <img src="https://via.placeholder.com/800x400" alt="Second slide" />
-      </div>
-      <div className="item-3">
-        <img src="https://via.placeholder.com/800x400" alt="Third slide" />
-      </div>
-    </div>
     </div>
   );
 };
 
-export default CarouselComponent;
+export default CarouselComponent_2;
