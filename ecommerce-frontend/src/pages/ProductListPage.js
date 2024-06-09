@@ -3,13 +3,14 @@ import axios from '../api/axios';
 import { Link, useLocation } from 'react-router-dom';
 
 const ProductListPage = () => {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [nextPage, setNextPage] = useState(null);
-  const [prevPage, setPrevPage] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const location = useLocation();
+  const [products, setProducts] = useState([]);  // State to manage the list of products
+  const [categories, setCategories] = useState([]);  // State to manage the list of categories
+  const [nextPage, setNextPage] = useState(null);  // State to manage the next page URL
+  const [prevPage, setPrevPage] = useState(null);  // State to manage the previous page URL
+  const [currentPage, setCurrentPage] = useState(1);  // State to manage the current page number
+  const location = useLocation();  // Hook to get the current location
 
+  // Fetch categories when the component mounts
   useEffect(() => {
     axios.get('/categories/')
       .then(response => {
@@ -20,6 +21,7 @@ const ProductListPage = () => {
       });
   }, []);
 
+  // Fetch products when the component mounts or when location.search or currentPage changes
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryId = params.get('category_id');
@@ -47,6 +49,7 @@ const ProductListPage = () => {
       });
   }, [location.search, currentPage]);
 
+  // Handle category selection change
   const handleCategoryChange = (event) => {
     const selectedCategory = event.target.value;
     if (selectedCategory) {
@@ -56,12 +59,14 @@ const ProductListPage = () => {
     }
   };
 
+  // Handle pagination to the next page
   const handleNextPage = () => {
     if (nextPage) {
       setCurrentPage(currentPage + 1);
     }
   };
 
+  // Handle pagination to the previous page
   const handlePrevPage = () => {
     if (prevPage) {
       setCurrentPage(currentPage - 1);

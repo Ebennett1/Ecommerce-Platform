@@ -6,6 +6,7 @@ import CartContext from '../context/CartContext';
 import axios from '../api/axios';
 import OrderConfirmationPage from './OrderConfirmationPage';
 
+// Load Stripe with your publishable key
 const stripePromise = loadStripe('pk_test_51PMLrxL6Ra3fxI3YhY4LGsFSF5VvDpT0fhe5Op37qurmfvX2zIWzqmbsdxyCGfWK8nsPULQU7fgtaLizwIyJItxJ00aJcerxJU');
 
 const CheckoutPage = () => {
@@ -16,9 +17,10 @@ const CheckoutPage = () => {
   const [clientSecret, setClientSecret] = useState('');
   const [isLoading, setIsLoading] = useState(true);
 
+  // Fetch initial data when component mounts
   useEffect(() => {
     const fetchInitialData = async () => {
-      await fetchCart();
+      await fetchCart();  // Fetch cart details
       if (cart.items.length === 0) {
         setIsLoading(false);
         return;
@@ -30,6 +32,7 @@ const CheckoutPage = () => {
         }
       };
       try {
+        // Create payment intent
         const response = await axios.post('/create-payment-intent/', { total_price: cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0) }, config);
         setClientSecret(response.data.clientSecret);
       } catch (error) {
@@ -40,13 +43,15 @@ const CheckoutPage = () => {
     };
 
     fetchInitialData();
-  }, []); // Only run once
+  }, []);  // Only run once
 
   if (orderSuccess) {
+    // Show order confirmation page if order is successful
     return <OrderConfirmationPage order={orderDetails} />;
   }
 
   if (isLoading) {
+    // Show loading message while data is being fetched
     return <div>Loading...</div>;
   }
 
@@ -88,11 +93,12 @@ const CheckoutForm = ({ clientSecret, setOrderSuccess, setOrderDetails }) => {
     event.preventDefault();
     if (!stripe || !elements) return;
 
+    // Confirm card payment
     const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
         card: elements.getElement(CardElement),
         billing_details: {
-          name: 'Your Name',
+          name: 'Your Name',  // You can customize this with actual user details
         },
       },
     });
@@ -100,6 +106,7 @@ const CheckoutForm = ({ clientSecret, setOrderSuccess, setOrderDetails }) => {
     if (error) {
       console.error('Payment failed:', error);
     } else if (paymentIntent.status === 'succeeded') {
+      // Create order in the backend
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
       const config = {
         headers: {

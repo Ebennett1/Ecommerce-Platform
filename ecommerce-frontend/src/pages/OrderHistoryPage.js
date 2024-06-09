@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 
 const OrderHistoryPage = () => {
-  const [orders, setOrders] = useState([]);
-  const [error, setError] = useState('');
+  const [orders, setOrders] = useState([]);  // State to manage the list of orders
+  const [error, setError] = useState('');  // State to manage error messages
 
+  // Fetch order history when the component mounts
   useEffect(() => {
     const fetchOrderHistory = async () => {
       try {
@@ -25,6 +26,7 @@ const OrderHistoryPage = () => {
     fetchOrderHistory();
   }, []);
 
+  // Clear order history
   const handleClearHistory = async () => {
     try {
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
@@ -41,6 +43,7 @@ const OrderHistoryPage = () => {
     }
   };
 
+  // Reorder items from a past order
   const handleReorder = async (orderId) => {
     try {
       const token = JSON.parse(localStorage.getItem('authTokens')).access;

@@ -6,12 +6,16 @@ const CartPage = () => {
   const { cart, fetchCart, updateCartItem, removeCartItem } = useContext(CartContext);
   const navigate = useNavigate();
 
+  // Fetch the cart items when the component mounts
   useEffect(() => {
     fetchCart();
   }, [fetchCart]);
 
+  // Extract items from the cart or default to an empty array
   const items = cart?.items || [];
+  // Calculate total quantity of items in the cart
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+  // Calculate total price of items in the cart
   const totalPrice = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2);
 
   return (
@@ -21,12 +25,14 @@ const CartPage = () => {
         <h2 className="subtitle">Subtotal: ${totalPrice}</h2>
         <button className="button is-primary" onClick={() => navigate('/checkout')}>Go to Checkout</button>
       </div>
+      {/* Display message if the cart is empty */}
       {totalQuantity === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         <ul className="box">
           {items.map(item => (
             <li key={item.id} className="media mb-4">
+              {/* Display product image if available */}
               {item.product.image && (
                 <figure className="media-left">
                   <p className="image is-128x128">

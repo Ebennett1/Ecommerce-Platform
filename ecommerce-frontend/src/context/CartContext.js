@@ -6,6 +6,7 @@ const CartContext = createContext();
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({ items: [] });
 
+  // Function to fetch the cart from the server
   const fetchCart = useCallback(async () => {
     try {
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
@@ -22,10 +23,12 @@ export const CartProvider = ({ children }) => {
     }
   }, []);
 
+  // Fetch the cart when the component mounts or fetchCart changes
   useEffect(() => {
     fetchCart();
   }, [fetchCart]);
 
+  // Function to add an item to the cart
   const addToCart = useCallback(async (productId, quantity) => {
     try {
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
@@ -35,12 +38,13 @@ export const CartProvider = ({ children }) => {
         }
       };
       await axios.post('/cart/add/', { product_id: productId, quantity }, config);
-      fetchCart();
+      fetchCart();  // Refresh the cart after adding an item
     } catch (error) {
       console.error('Failed to add to cart', error);
     }
   }, [fetchCart]);
 
+  // Function to update an item in the cart
   const updateCartItem = useCallback(async (itemId, quantity) => {
     try {
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
@@ -50,12 +54,13 @@ export const CartProvider = ({ children }) => {
         }
       };
       await axios.put(`/cart/update/${itemId}/`, { quantity }, config);
-      fetchCart();
+      fetchCart();  // Refresh the cart after updating an item
     } catch (error) {
       console.error('Failed to update cart item', error);
     }
   }, [fetchCart]);
 
+  // Function to remove an item from the cart
   const removeCartItem = useCallback(async (itemId) => {
     try {
       const token = JSON.parse(localStorage.getItem('authTokens')).access;
@@ -65,7 +70,7 @@ export const CartProvider = ({ children }) => {
         }
       };
       await axios.delete(`/cart/update/${itemId}/`, config);
-      fetchCart();
+      fetchCart();  // Refresh the cart after removing an item
     } catch (error) {
       console.error('Failed to remove cart item', error);
     }

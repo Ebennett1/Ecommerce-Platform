@@ -4,14 +4,15 @@ import axios from '../api/axios';
 import { Link } from 'react-router-dom';
 
 const ProfilePage = () => {
-  const { user, authTokens } = useContext(AuthContext);
+  const { user, authTokens } = useContext(AuthContext);  // Access user and authTokens from AuthContext
   const [profile, setProfile] = useState({
     username: '',
     email: '',
     phone_number: ''
-  });
-  const [error, setError] = useState(null);
+  });  // State to manage the profile data
+  const [error, setError] = useState(null);  // State to manage error messages
 
+  // Fetch profile data when the component mounts or when the user or authTokens change
   useEffect(() => {
     if (user) {
       const fetchProfile = async () => {
@@ -40,6 +41,7 @@ const ProfilePage = () => {
     }
   }, [user, authTokens]);
 
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProfile({
@@ -48,6 +50,7 @@ const ProfilePage = () => {
     });
   };
 
+  // Handle form submission to update profile data
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
