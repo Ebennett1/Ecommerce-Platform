@@ -51,15 +51,15 @@ const CheckoutPage = () => {
   }
 
   return (
-    <div className="checkout-container">
-      <h1>Checkout</h1>
-      <h2>Order Summary</h2>
+    <div className="checkout-container section">
+      <h1 className="title">Checkout</h1>
+      <h2 className="subtitle">Order Summary</h2>
       {cart.items.length === 0 ? (
         <p>Your cart is empty</p>
       ) : (
         <ul className="order-summary">
           {cart.items.map(item => (
-            <li key={item.id} className="order-item">
+            <li key={item.id} className="order-item box">
               {item.product.name} - Quantity: {item.quantity} <br />
               {item.product.image && (
                 <img src={item.product.image} alt={item.product.name} className="product-image" />
@@ -69,8 +69,8 @@ const CheckoutPage = () => {
           ))}
         </ul>
       )}
-      <h3>Total Price: ${cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2)}</h3>
-      <button className="back-button" onClick={() => navigate('/cart')}>Back to Cart</button>
+      <h3 className="title is-4">Total Price: ${cart.items.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2)}</h3>
+      <button className="button is-link back-button" onClick={() => navigate('/cart')}>Back to Cart</button>
       {cart.items.length > 0 && (
         <Elements stripe={stripePromise}>
           <CheckoutForm clientSecret={clientSecret} setOrderSuccess={setOrderSuccess} setOrderDetails={setOrderDetails} />
@@ -114,8 +114,13 @@ const CheckoutForm = ({ clientSecret, setOrderSuccess, setOrderDetails }) => {
 
   return (
     <form onSubmit={handleSubmit} className="checkout-form">
-      <CardElement className="card-element" />
-      <button className="checkout-button" type="submit" disabled={!stripe}>Place Order</button>
+      <div className="field">
+        <div className="control">
+          <button className='card-h1'>Enter Card Number Here</button>
+          <CardElement  />
+        </div>
+      </div>
+      <button className="button is-primary checkout-button" type="submit" disabled={!stripe}>Place Order</button>
     </form>
   );
 };

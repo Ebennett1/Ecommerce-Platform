@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios';
 
-
 const OrderHistoryPage = () => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState('');
@@ -59,30 +58,34 @@ const OrderHistoryPage = () => {
   };
 
   return (
-    <div className='order-history-div'>
-      <h1>Order History</h1>
-      <button className='clear-history-button' onClick={handleClearHistory}>Clear Order History</button>
-      {error && <p className="error-message">{error}</p>}
+    <div className='order-history-div container'>
+      <h1 className="title is-1">Order History</h1>
+      <button className='button is-danger clear-history-button' onClick={handleClearHistory}>Clear Order History</button>
+      {error && <p className="notification is-danger">{error}</p>}
       {orders.length === 0 ? (
-        <p>You have no orders.</p>
+        <p className="has-text-centered">You have no orders.</p>
       ) : (
         <ul className='order-list'>
           {orders.map(order => (
-            <li key={order.id} className='order-item'>
-              <h2><u>Order {order.id}</u> </h2>
+            <li key={order.id} className='box'>
+              <h2 className="title is-4"><u>Order {order.id}</u> </h2>
               <p>Total Price: ${order.total_price}</p>
               <p>Status: {order.status}</p>
               <ul className='order-item-list'>
                 {order.items.map(item => (
-                  <li key={item.id} className='order-product'>
+                  <li key={item.id} className='order-product media'>
                     {item.product.image && (
-                      <img src={item.product.image} alt={item.product.name} className="order-product-image"/>
+                      <figure className="media-left">
+                        <img src={item.product.image} alt={item.product.name} className="image is-64x64"/>
+                      </figure>
                     )}
-                    {item.product.name} Quantity: {item.quantity} - Price: ${item.price}
+                    <div className="media-content">
+                      {item.product.name} Quantity: {item.quantity} - Price: ${item.price}
+                    </div>
                   </li>
                 ))}
               </ul>
-              <button className='reorder-button' onClick={() => handleReorder(order.id)}>Reorder</button>
+              <button className='button is-success reorder-button' onClick={() => handleReorder(order.id)}>Reorder</button>
             </li>
           ))}
         </ul>

@@ -10,46 +10,53 @@ const CartPage = () => {
     fetchCart();
   }, [fetchCart]);
 
-  // Ensure cart and cart.items are defined and are arrays
   const items = cart?.items || [];
-
-  // Calculate the total quantity of items in the cart
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0).toFixed(2);
 
-  console.log("Cart Items:", items);  // Debug log
-
   return (
-    <div className="cart-page">
-      <h1>Shopping Cart</h1>
-      <div className="cart-summary">
-        <h2>Subtotal: ${totalPrice}</h2>
-        <button className="checkout-button" onClick={() => navigate('/checkout')}>Go to Checkout</button>
+    <div className="container is-fluid">
+      <h1 className="title">Shopping Cart</h1>
+      <div className="box">
+        <h2 className="subtitle">Subtotal: ${totalPrice}</h2>
+        <button className="button is-primary" onClick={() => navigate('/checkout')}>Go to Checkout</button>
       </div>
       {totalQuantity === 0 ? (
         <p>Your cart is empty</p>
       ) : (
-        <ul className="cart-items">
+        <ul className="box">
           {items.map(item => (
-            <li key={item.id} className="cart-item">
+            <li key={item.id} className="media mb-4">
               {item.product.image && (
-                <img src={item.product.image} alt={item.product.name} className="product-image"/>
+                <figure className="media-left">
+                  <p className="image is-128x128">
+                    <img src={item.product.image} alt={item.product.name} />
+                  </p>
+                </figure>
               )}
-              <div className="item-details">
-                <h3>{item.product.name}</h3>
-                <p>${item.product.price}</p>
-                <div className="quantity-controls">
-                  <button className="sub-quanity-button" onClick={() => updateCartItem(item.id, item.quantity - 1)}>-</button>
-                  <span>{item.quantity}</span>
-                  <button className="add-quanity-button" onClick={() => updateCartItem(item.id, item.quantity + 1)}>+</button>
+              <div className="media-content">
+                <div className="content">
+                  <h3 className="title is-5">{item.product.name}</h3>
+                  <p className="subtitle is-6">${item.product.price}</p>
+                  <div className="field has-addons">
+                    <p className="control">
+                      <button className="button is-small" onClick={() => updateCartItem(item.id, item.quantity - 1)}>-</button>
+                    </p>
+                    <p className="control">
+                      <span className="button is-static">{item.quantity}</span>
+                    </p>
+                    <p className="control">
+                      <button className="button is-small" onClick={() => updateCartItem(item.id, item.quantity + 1)}>+</button>
+                    </p>
+                  </div>
+                  <button className="button is-danger is-small" onClick={() => removeCartItem(item.id)}>Remove</button>
                 </div>
-                <button className="remove-item-button" onClick={() => removeCartItem(item.id)}>Remove</button>
               </div>
             </li>
           ))}
         </ul>
       )}
-      <button className="back-button" onClick={() => navigate('/products')}>Back to Products</button>
+      <button className="button is-link mt-4" onClick={() => navigate('/products')}>Back to Products</button>
     </div>
   );
 };

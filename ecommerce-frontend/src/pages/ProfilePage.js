@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import AuthContext from '../context/AuthContext';
-import PasswordReset from '../forms/PasswordReset';
 import axios from '../api/axios';
 import { Link } from 'react-router-dom';
-
 
 const ProfilePage = () => {
   const { user, authTokens } = useContext(AuthContext);
@@ -75,26 +73,37 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className='profile-container'>
-      <h1>Profile Page</h1>
-      {error && <p className="error">{error}</p>}
-      <form className='profile-form' onSubmit={handleSubmit}>
-        <div className='form-group'>
-          <label>Username:</label>
-          <input type="text" name="username" value={profile.username} readOnly />
-        </div>
-        <div className='form-group'>
-          <label>Email:</label>
-          <input type="email" name="email" value={profile.email} readOnly />
-        </div>
-        <div className='form-group'>
-          <label>Phone Number:</label>
-          <input type="text" name="phone_number" value={profile.phone_number} onChange={handleChange} />
-        </div>
-        <button type="submit" className='update-button'>Update Profile</button>
-      </form>
-
-      <Link to="/password-reset">Forgot Password? Reset Here</Link>
+    <div className='container'>
+      <div className='box'>
+        <h1 className='title'>Profile Page</h1>
+        {error && <p className="notification is-danger">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className='field'>
+            <label className='label'>Username:</label>
+            <div className='control'>
+              <input className='input' type="text" name="username" value={profile.username} readOnly />
+            </div>
+          </div>
+          <div className='field'>
+            <label className='label'>Email:</label>
+            <div className='control'>
+              <input className='input' type="email" name="email" value={profile.email} readOnly />
+            </div>
+          </div>
+          <div className='field'>
+            <label className='label'>Phone Number:</label>
+            <div className='control'>
+              <input className='input' type="text" name="phone_number" value={profile.phone_number} onChange={handleChange} />
+            </div>
+          </div>
+          <div className='field'>
+            <div className='control'>
+              <button type="submit" className='button is-link'>Update Profile</button>
+            </div>
+          </div>
+        </form>
+        <Link to="/password-reset" className='button is-text'>Forgot Password? Reset Here</Link>
+      </div>
     </div>
   );
 };

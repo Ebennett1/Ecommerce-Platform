@@ -16,15 +16,19 @@ const CategoryListPage = () => {
   }, []);
 
   return (
-    <div className="category-list">
-      <h1>Categories</h1>
-      <ul>
-        {categories.map(category => (
-          <li key={category.id}>
-            <Link to={`/products?category_id=${category.id}`}>{category.name}</Link>
-          </li>
-        ))}
-      </ul>
+    <div className="container">
+      <div className="category-list">
+        <h1 className="title">Categories</h1>
+        <ul>
+          {categories.map(category => (
+            <li key={category.id} className="box">
+              <Link to={`/products?category_id=${category.id}`} className="has-text-link">
+                {category.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

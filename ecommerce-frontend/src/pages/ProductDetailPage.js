@@ -29,16 +29,22 @@ const ProductDetailPage = () => {
   }
 
   return (
-    <div className="product-detail">
-      <button className='product-names'><u>{product.name}</u></button>
-      <p>{product.description}</p>
-      <p>${product.price}</p>
-      {product.image && (
-        <img src={product.image} alt={product.name} className="product-image" />
-      )}
-      <p> Available in Stock: {product.stock}</p>
-      <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button> <br/>
-      <button className="back-button" onClick={() => navigate('/products')}>Back to Products</button>
+    <div className="container">
+      <div className="box">
+        <h1 className="title is-4"><u>{product.name}</u></h1>
+        <p className="content">{product.description}</p>
+        <p className="content"><strong>Price:</strong> ${product.price}</p>
+        {product.image && (
+          <figure className="image_3">
+            <img src={product.image} alt={product.name} />
+          </figure>
+        )}
+        <p className="content"><strong>Available in Stock:</strong> {product.stock}</p>
+        
+          <button className="button is-primary" onClick={handleAddToCart}>Add to Cart</button>
+          <br></br>
+          <button className="button" onClick={() => navigate('/products')}>Back to Products</button>
+      </div>
     </div>
   );
 };

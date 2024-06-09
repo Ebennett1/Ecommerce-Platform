@@ -72,32 +72,40 @@ const ProductListPage = () => {
   const selectedCategoryId = params.get('category_id') || '';
 
   return (
-    <div>
-      <h1>Products</h1>
-      <div>
-        <label htmlFor="category">Filter by category:</label>
-        <select id="category" value={selectedCategoryId} onChange={handleCategoryChange}>
-          <option value="">All Categories</option>
-          {categories.map(category => (
-            <option key={category.id} value={category.id}>{category.name}</option>
-          ))}
-        </select>
+    <div className="container">
+      <h1 className="title">Products</h1>
+      <div className="field">
+        <label className="label" htmlFor="category">Filter by category:</label>
+        <div className="control">
+          <div className="select">
+            <select id="category" value={selectedCategoryId} onChange={handleCategoryChange}>
+              <option value="">All Categories</option>
+              {categories.map(category => (
+                <option key={category.id} value={category.id}>{category.name}</option>
+              ))}
+            </select>
+          </div>
+        </div>
       </div>
-      <div className="products">
+      <div className="columns is-multiline">
         {products.map(product => (
-          <div key={product.id} className="product">
-            <h2 className='product-names'>{product.name}</h2>
-            <p>${product.price}</p>
-            {product.image && (
-              <img src={product.image} alt={product.name} className="product-image" />
-            )}
-            <Link to={`/product/${product.id}`} className="product-link">View Details</Link>
+          <div key={product.id} className="column is-12-mobile is-6-tablet is-3-desktop">
+            <div className="box product">
+              <h2 className="title is-5 product-names">{product.name}</h2>
+              <p className="content">${product.price}</p>
+              {product.image && (
+                <figure className="image_4">
+                  <img src={product.image} alt={product.name} className="product-image"/>
+                </figure>
+              )}
+              <Link to={`/product/${product.id}`} className="button is-link product-link">View Details</Link>
+            </div>
           </div>
         ))}
       </div>
       <div className="pagination">
-        {prevPage && <button className='prev-button' onClick={handlePrevPage}>Previous</button>}
-        {nextPage && <button className='next-button' onClick={handleNextPage}>Next</button>}
+        {prevPage && <button className="button is-primary prev-button" onClick={handlePrevPage}>Previous</button>}
+        {nextPage && <button className="button is-primary next-button" onClick={handleNextPage}>Next</button>}
       </div>
     </div>
   );
