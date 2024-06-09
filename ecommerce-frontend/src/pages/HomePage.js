@@ -44,7 +44,6 @@ export default HomePage;
 
 
 // Next steps- 
-//comments
 // Deployment
 // README.md
 
