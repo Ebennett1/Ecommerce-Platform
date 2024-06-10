@@ -1,70 +1,234 @@
-# Getting Started with Create React App
+# Ecommerce-Platform-Front-end
+# Elite Cart
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Hosted App Link](https://your-app-link.com)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Welcome to our E-commerce App, a dynamic and user-friendly online store that provides a seamless shopping experience. From browsing through various categories to managing your cart and making secure payments, our app is designed to meet all your shopping needs efficiently.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- Bulma CSS Framework
+- Django (Backend)
+- Django REST Framework (API)
+- PostgreSQL (Database)
+- Stripe (Payment Processing)
+- Axios (HTTP Client)
+- React Router (Navigation)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation and Setup
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js and npm
+- Python and pip
+- PostgreSQL
 
-### `npm run build`
+### Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/your-repo.git
+    cd your-repo/frontend
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
+    ```bash
+    npm start
+    ```
 
-### `npm run eject`
+### Backend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Navigate to the backend directory:
+    ```bash
+    cd ../backend
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Create a virtual environment and activate it:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate # On Windows use `venv\Scripts\activate`
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. Set up the PostgreSQL database:
+    ```bash
+    createdb your-database-name
+    ```
 
-## Learn More
+5. Apply migrations:
+    ```bash
+    python manage.py migrate
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. Create a superuser:
+    ```bash
+    python manage.py createsuperuser
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7. Start the development server:
+    ```bash
+    python manage.py runserver
+    ```
 
-### Code Splitting
+## API Documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Description
 
-### Analyzing the Bundle Size
+Our API provides endpoints to manage products, categories, orders, and user authentication for the e-commerce platform. The API is built with Django REST Framework.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Base URL
 
-### Making a Progressive Web App
+https://your-app-link.com/api
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Endpoints
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Authentication
 
-### Deployment
+- **Login**
+    - **URL:** `/auth/login/`
+    - **Method:** `POST`
+    - **Request Body:**
+        ```json
+        {
+          "username": "your-username",
+          "password": "your-password"
+        }
+        ```
+    - **Response:**
+        ```json
+        {
+          "access": "access-token",
+          "refresh": "refresh-token"
+        }
+        ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Register**
+    - **URL:** `/auth/register/`
+    - **Method:** `POST`
+    - **Request Body:**
+        ```json
+        {
+          "username": "your-username",
+          "password": "your-password",
+          "email": "your-email"
+        }
+        ```
+    - **Response:**
+        ```json
+        {
+          "id": "user-id",
+          "username": "your-username",
+          "email": "your-email"
+        }
+        ```
 
-### `npm run build` fails to minify
+#### Products
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Get All Products**
+    - **URL:** `/products/`
+    - **Method:** `GET`
+    - **Response:**
+        ```json
+        [
+          {
+            "id": "product-id",
+            "name": "product-name",
+            "description": "product-description",
+            "price": "product-price",
+            "image": "product-image-url",
+            "stock": "product-stock"
+          },
+          ...
+        ]
+        ```
+
+- **Get Product by ID**
+    - **URL:** `/products/:id/`
+    - **Method:** `GET`
+    - **Response:**
+        ```json
+        {
+          "id": "product-id",
+          "name": "product-name",
+          "description": "product-description",
+          "price": "product-price",
+          "image": "product-image-url",
+          "stock": "product-stock"
+        }
+        ```
+
+#### Orders
+
+- **Create Order**
+    - **URL:** `/orders/create/`
+    - **Method:** `POST`
+    - **Request Body:**
+        ```json
+        {
+          "cart": [
+            {
+              "product_id": "product-id",
+              "quantity": "quantity"
+            },
+            ...
+          ],
+          "total_price": "total-price"
+        }
+        ```
+    - **Response:**
+        ```json
+        {
+          "id": "order-id",
+          "total_price": "total-price",
+          "status": "order-status",
+          "items": [
+            {
+              "product": "product-id",
+              "quantity": "quantity",
+              "price": "price"
+            },
+            ...
+          ]
+        }
+        ```
+
+- **Get Order by ID**
+    - **URL:** `/orders/:id/`
+    - **Method:** `GET`
+    - **Response:**
+        ```json
+        {
+          "id": "order-id",
+          "total_price": "total-price",
+          "status": "order-status",
+          "items": [
+            {
+              "product": "product-id",
+              "quantity": "quantity",
+              "price": "price"
+            },
+            ...
+          ]
+        }
+        ```
+
+### Making Requests
+
+All requests to the API should include the appropriate headers for authentication and content type:
+
+```http
+Authorization: Bearer your-access-token
+Content-Type: application/json
