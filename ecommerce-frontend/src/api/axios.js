@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance with predefined configurations
 const axiosInstance = axios.create({
-  baseURL: 'https://elite-cart-backend-c5ba6b2fce2f.herokuapp.com/',  // Base URL for the API
+  baseURL: 'https://elite-cart-backend-c5ba6b2fce2f.herokuapp.com/api',  // Base URL for the API
   timeout: 5000,  // Timeout setting for requests
   headers: {
     // Set Authorization header if auth tokens are available in localStorage

@@ -34,11 +34,12 @@ const ProductListPage = () => {
     if (searchQuery) {
       url += `&search=${searchQuery}`;
     }
-
+  
     console.log('Fetching products from URL:', url);
-
+  
     axios.get(url)
       .then(response => {
+        console.log('Product data:', response.data); // Log the response data
         setProducts(response.data.results);
         setNextPage(response.data.next);
         setPrevPage(response.data.previous);
@@ -48,6 +49,7 @@ const ProductListPage = () => {
         console.error(error.response || error.message);
       });
   }, [location.search, currentPage]);
+  
 
   // Handle category selection change
   const handleCategoryChange = (event) => {
