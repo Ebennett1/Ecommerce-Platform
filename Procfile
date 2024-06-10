@@ -1,0 +1,3 @@
+web: serve -s build
+
+
