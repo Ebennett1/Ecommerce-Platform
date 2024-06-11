@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an axios instance with predefined configurations
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8000/api/',  // Base URL for the API
+  baseURL: 'https://elite-cart-backend-c5ba6b2fce2f.herokuapp.com/api',  // Base URL for the API
   timeout: 5000,  // Timeout setting for requests
   headers: {
     // Set Authorization header if auth tokens are available in localStorage
@@ -27,7 +27,7 @@ axiosInstance.interceptors.response.use(
       if (refreshToken) {
         try {
           // Request new tokens using the refresh token
-          const tokenResponse = await axios.post('http://localhost:8000/api/token/refresh/', { refresh: refreshToken });
+          const tokenResponse = await axios.post('https://elite-cart-backend-c5ba6b2fce2f.herokuapp.com/api/token/refresh/', { refresh: refreshToken });
           
           // Store the new tokens in localStorage
           localStorage.setItem('authTokens', JSON.stringify(tokenResponse.data));

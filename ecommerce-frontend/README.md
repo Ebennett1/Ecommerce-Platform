@@ -5,7 +5,7 @@
 
 ## Description
 
-Welcome to our Elite Cart, a dynamic and user-friendly online store that provides a seamless shopping experience. From browsing through various categories to managing your cart and making secure payments, our app is designed to meet all your shopping needs efficiently.
+Welcome to our E-commerce App, a dynamic and user-friendly online store that provides a seamless shopping experience. From browsing through various categories to managing your cart and making secure payments, our app is designed to meet all your shopping needs efficiently.
 
 ## Technologies Used
 
@@ -17,7 +17,6 @@ Welcome to our Elite Cart, a dynamic and user-friendly online store that provide
 - Stripe (Payment Processing)
 - Axios (HTTP Client)
 - React Router (Navigation)
-- Unsplash API (Images)
 
 ## Installation and Setup
 
